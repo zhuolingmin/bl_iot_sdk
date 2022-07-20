@@ -1,6 +1,6 @@
 
 /*
- * Copyright (c) 2020 Bouffalolab.
+ * Copyright (c) 2016-2022 Bouffalolab.
  *
  * This file is part of
  *     *** Bouffalolab Software Dev Kit ***
@@ -168,12 +168,16 @@ struct txdesc_host
 {
     uint32_t ready;
 
+#if defined(CFG_CHIP_BL808)
+    uint32_t eth_packet[1600/4];
+#endif
+
     /// API of the embedded part
     struct hostdesc host;
 
-    uint32_t pad_txdesc[220/4];
+    uint32_t pad_txdesc[204/4];
 
-    uint32_t pad_buf[512/4];
+    uint32_t pad_buf[400/4];
 };
 
 /// Structure containing the information about the PHY channel that is used

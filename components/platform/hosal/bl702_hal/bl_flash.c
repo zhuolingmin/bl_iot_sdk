@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 Bouffalolab.
+ * Copyright (c) 2016-2022 Bouffalolab.
  *
  * This file is part of
  *     *** Bouffalolab Software Dev Kit ***
@@ -454,6 +454,10 @@ int ATTR_TCM_SECTION bl_flash_init(void)
     uint32_t jid = 0;
     uint32_t offset = 0;
     int ret = 0;
+
+    // patch for SF2 swap
+    *(volatile uint32_t *)0x40000130 |= (1U << 16);  // enable GPIO25 input
+    *(volatile uint32_t *)0x40000134 |= (1U << 16);  // enable GPIO27 input
 
     // get flash config from bootheader
     L1C_Cache_Flush_Ext();

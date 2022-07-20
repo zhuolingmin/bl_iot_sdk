@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 Bouffalolab.
+ * Copyright (c) 2016-2022 Bouffalolab.
  *
  * This file is part of
  *     *** Bouffalolab Software Dev Kit ***
@@ -32,4 +32,5 @@
 int bl_wdt_init(int ms);
 void bl_wdt_feed(void);
 void bl_wdt_disable(void);
+int bl_wdt_restore(void);  // restore wdt e.g. after timer reset
 #endif

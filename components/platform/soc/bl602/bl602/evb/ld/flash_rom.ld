@@ -39,10 +39,16 @@ SECTIONS
       . = ORIGIN(flash) + __RFTLV_SIZE_OFFSET + __RFTLV_SIZE_HOLE;
   } > flash
 
+  .bugkiller_command :
+  {
+    PROVIDE( __bugkiller_command_start = ADDR(.bugkiller_command) );
+    PROVIDE( __bugkiller_command_end = ADDR(.bugkiller_command) + SIZEOF(.bugkiller_command) );
+    KEEP (*(.static_bugkiller_command))
+  } > bugkill
   .bugkiller  :
   {
     KEEP (*(.bugkiller_code))
-    *bugkiller*.o(.rodata* .text* .data* .sdata* .sbss*)
+    KEEP (*bugkiller*.o(.rodata* .text* .data* .sdata* .sbss*))
   } > bugkill
 
   .text           :
@@ -165,8 +171,8 @@ SECTIONS
 
     *(.tcm_code*)
     *(.tcm_const*)
-    *(.sclock_rlt_code)
-    *(.sclock_rlt_const)
+    *(.sclock_rlt_code*)
+    *(.sclock_rlt_const*)
     *(.data .data.*)
     *(.gnu.linkonce.d.*)
 

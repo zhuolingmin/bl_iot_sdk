@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 Bouffalolab.
+ * Copyright (c) 2016-2022 Bouffalolab.
  *
  * This file is part of
  *     *** Bouffalolab Software Dev Kit ***
@@ -303,16 +303,6 @@ static void system_early_init(void)
 
     /* board config is set after system is init*/
     hal_board_cfg(0);
-
-#ifdef CFG_COMPONENT_BUGKILLER_ENABLE
-    /* add for bugkiller code compile，avoid compile-time optimization bugkiller_fun()*/
-extern int bugkiller_enable __attribute__((weak));
-extern int bugkiller_fun(void);
-
-    if (&bugkiller_enable) {
-        bugkiller_fun();
-    }
-#endif
 }
 
 void bfl_main()

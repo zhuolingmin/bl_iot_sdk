@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 Bouffalolab.
+ * Copyright (c) 2016-2022 Bouffalolab.
  *
  * This file is part of
  *     *** Bouffalolab Software Dev Kit ***
@@ -33,6 +33,7 @@
 
 uint16_t utils_crc16(void *dataIn, uint32_t len);
 uint32_t utils_crc32(void *dataIn, uint32_t len);
+uint16_t utils_crc16_ccitt(void *dataIn, uint32_t len);
 
 struct crc32_stream_ctx {
   uint32_t crc;

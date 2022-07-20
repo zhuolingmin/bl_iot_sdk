@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 Bouffalolab.
+ * Copyright (c) 2016-2022 Bouffalolab.
  *
  * This file is part of
  *     *** Bouffalolab Software Dev Kit ***
@@ -108,7 +108,7 @@ void vApplicationSleep(TickType_t xExpectedIdleTime_ms)
         return;
     }
 
-    bleSleepDuration_32768cycles = ble_controller_sleep();
+    bleSleepDuration_32768cycles = ble_controller_sleep(0);
 
     if(bleSleepDuration_32768cycles < TIME_5MS_IN_32768CYCLE)
     {
