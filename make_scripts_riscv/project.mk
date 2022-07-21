@@ -194,6 +194,7 @@ all:
 ifeq ("$(OS)","Windows_NT")
 else
 ifeq ("$(CONFIG_CHIP_NAME)", "BL602")
+	@cd  $(BL60X_SDK_PATH)/tools/flash_tool; ./bflb_iot_tool --chipname=BL602 --baudrate=2000000 --firmware=$(APP_BIN) --build 
 endif
 endif
 	@echo "Building Finish. To flash build output."
